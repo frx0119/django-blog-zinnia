@@ -7,6 +7,7 @@ import django.utils.timezone
 
 import mptt.fields
 import tagging.fields
+import ckeditor.fields
 
 import zinnia.models_bases.entry
 from zinnia.migrations import user_model_label
@@ -51,7 +52,7 @@ class Migration(migrations.Migration):
                 ('end_publication', models.DateTimeField(help_text='End date of publication.', null=True, verbose_name='end publication', db_index=True, blank=True)),
                 ('creation_date', models.DateTimeField(default=django.utils.timezone.now, help_text="Used to build the entry's URL.", verbose_name='creation date', db_index=True)),
                 ('last_update', models.DateTimeField(default=django.utils.timezone.now, verbose_name='last update')),
-                ('content', models.TextField(verbose_name='content', blank=True)),
+                ('content', ckeditor.fields.RichTextField(blank=True)),
                 ('comment_enabled', models.BooleanField(default=True, help_text='Allows comments if checked.', verbose_name='comments enabled')),
                 ('pingback_enabled', models.BooleanField(default=True, help_text='Allows pingbacks if checked.', verbose_name='pingbacks enabled')),
                 ('trackback_enabled', models.BooleanField(default=True, help_text='Allows trackbacks if checked.', verbose_name='trackbacks enabled')),
